@@ -1,0 +1,110 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.center h1
+{
+    color:#1c1c1c;
+}
+
+/* .header
+{
+    background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("/images/shivam-tiwari-gPOrH28OG-U-unsplash.jpg");
+    background-position: center center;
+    background-size: cover;
+    max-height: 100vh;
+    height: 100vh;
+} */
+
+.center
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+    padding: 25px;
+    flex-direction:column;
+    background: url("https://images.pexels.com/photos/7130555/pexels-photo-7130555.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+    background-position: center center;
+    background-size: cover;
+    max-height: 100vh;
+} 
+.center input
+{
+    width: 40%;
+}
+#f
+{
+    position: relative;
+    left: -30px;
+}
+
+.userAccount {
+    height: 35px;
+}
+
+#exampleDataList {
+    font-size: 16.5px;
+}
+
+#options{
+    /* font-size: 20px; */
+    /* border: 2px solid; */
+    height: max-content;
+    width: 39.8%;
+    background: white;
+    border-radius: 0px 0px 10px 10px;
+    visibility: hidden;
+}
+
+.optionValues {
+    cursor: pointer !important;
+}
+
+#maruqeeImgs1 {
+    height: max-content;
+}
+
+#maruqeeImgs2 {
+    height: max-content;
+}
+
+.marqueeImages{
+    height: 160px;
+    width: auto;
+    margin: 0px 0px 30px 30px;
+}
+
+/* .dropdown-menu{
+    left: -100% !important;
+    transform: translateX(30%) !important;
+} */
+
+.touristPlaces {
+    height: max-content;
+    padding : 25px;
+    width: 100%;
+    background: #EAF4F4;
+}
+
+#footer {
+    height: max-content;
+    padding : 30px 170px 30px 170px ;
+}
+#footer a {
+    text-decoration: none;
+    color: grey;
+}
+#footer div {
+    margin: auto;
+    display: flex;
+    width: 30%;
+    justify-content: space-evenly;
+}
+
+#copyright{
+    color: grey;
+}

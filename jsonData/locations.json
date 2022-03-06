@@ -1,0 +1,34 @@
+[
+  {
+    "location": "Van Vihar National Park",
+    "city": "Bhopal",
+    "description": "Located adjacent to Upper Lake in Bhopal District, Madhya Pradesh; Van Vihar National Park in Bhopal is a home to rich biodiversity. Declared as a National Park in the year 1979, it spans over an area of 445.21 hectares. A hybrid between a national park and zoo, it draws a huge number of tourists every year. With easy access to the Van Vihar National Park in Bhopal through a road, here’s a chance to submerge oneself amidst the lush greenery and enjoy the beauty of nature.",
+    "timings": "6:00 AM - 7:00 PM",
+    "entryFees": {
+      "Walking Tour": 20,
+      "Cycle Tour": 30,
+      "Two Wheeler": 60
+    },
+    "imgSrcName" : "vanVihar"
+  },
+  {
+    "location": "Sair Sapata",
+    "city": "Bhopal",
+    "description": "Sair Sapata is a significant entertainment zone, inaugurated on 29 September 2011. The tourism complex is predominantly a play park which is also a good leisure space for adults. Covering an area of 24.56 acres, Sair Sapata offers enjoyable activities like forest hiking, car dashing, zorbing and so on. Boat rides, four kiosks and three viewpoints keep tourists engaged.",
+    "timings": "11:00 AM - 10:00 PM",
+    "entryFees": {
+      "Per person": 30
+    },
+    "imgSrcName" : "sairSapata"
+  },
+  {
+    "location": "Manav Sangrahalya",
+    "city": "Bhopal",
+    "description": "Indira Gandhi Rashtriya Manav Sangrahalaya, the national museum of Anthropology, is majestically situated on the Shamla Hills, the upper lakefront of Bhopal. The museum presents the integrated story of the culture and evolution o f mankind. The highlight of this museum is the fact that it's the only one to have painted rock shelters with its post-c olonial repertoire of tribal folk, art and culture.",
+    "timings": "10:00 AM - 5:30 PM",
+    "entryFees": {
+      "Per person": 50
+    },
+    "imgSrcName" : "manavSangrahalya"
+  }
+]
