@@ -6,6 +6,42 @@ let listOfCities = document.getElementById("listOfCities");
 let copyright = document.getElementById("copyright");
 let optionValues = document.getElementsByClassName("optionValues");
 let knowMoreBtn = document.getElementsByClassName("knowMoreBtn");
+let addToCartBtn = document.getElementsByClassName("addToCartBtn");
+let cardItemsArr;
+var cartModal;
+
+setTimeout(() => {
+    cartModal = new bootstrap.Modal(document.getElementById('cartModal'), {
+        keyboard: false
+    })
+}, 100);
+
+updateCart();
+
+function updateCart() {
+    let SavedInlocalStorage = localStorage.getItem("cartItems");
+    // console.log(SavedInlocalStorage);
+    if (SavedInlocalStorage == null) {
+        cartList = [];
+    }
+    else {
+        cartList = JSON.parse(SavedInlocalStorage);
+    }
+
+    // console.log(cartList.length);
+
+    if (cartList.length === 0) {
+        cartHtml.innerHTML = `<p>Your cart is empty !</p>`;
+    }
+    else {
+        let temp = "";
+        cartList.forEach(e => {
+            temp += `<p>${e}</p>`;
+        })
+        cartHtml.innerHTML = temp;
+    }
+}
+
 
 // console.log(knowMoreBtn);
 
@@ -92,9 +128,9 @@ window.addEventListener("load", async () => {
                     <p class="card-text">${locObj["description"].slice(0, 170)}.....</p>
                     <p class="card-text my-0"><small class="text-muted">Timing : ${locObj["timings"]}</small></p>
                     <p class="card-text my-0"><small class="text-muted">Entry Fee : ${Object.values(locObj["entryFees"])[0]}</small></p>
-                    <div class="btns d-flex my-3">
+                    <div class="btns d-flex my-3">  
                         <button style="width: 100%" class="btn btn-success mx-1 knowMoreBtn">Know More</button>
-                        <button style="width: 100%" class="btn btn-danger mx-1">Add to cart <i class="fa fa-shopping-cart" style="font-size: 16px"></i></button>
+                        <button style="width: 100%" class="btn btn-danger addToCartBtn mx-1">Add to cart <i class="fa fa-shopping-cart" style="font-size: 16px"></i></button>
                     </div>
                 </div>
             </div>
@@ -110,6 +146,50 @@ window.addEventListener("load", async () => {
             location.href = "details.html";
         })
     })
+    
+    Array.from(addToCartBtn).forEach((btn) => {
+        let SavedInlocalStorage = localStorage.getItem("cartItems");
+
+        if (SavedInlocalStorage == null) {
+            cartList = [];
+        }
+        else {
+            cartList = JSON.parse(SavedInlocalStorage);
+        }
+
+        let placeToVisit = btn.parentNode.parentNode.getElementsByClassName("card-title")[0].innerText;
+
+        if (!cartList.includes(placeToVisit)) {
+            btn.innerHTML = `Add to cart <i class="fa fa-shopping-cart" style="font-size: 16px"></i>`;
+        }
+        else {
+            btn.innerText = "Remove from Cart";
+        }
+
+        btn.addEventListener("click", (e) => {
+            let placeToVisit = e.target.parentNode.parentNode.getElementsByClassName("card-title")[0].innerText;
+            // console.log(placeToVisit);
+            // cartItems array stored in localStorage
+            
+            if (cartList.includes(placeToVisit)){
+                let ind = cartList.indexOf(placeToVisit);
+                cartList.splice(ind, 1);
+
+                // console.log(cartList);
+                localStorage.setItem("cartItems", JSON.stringify(cartList));
+                e.target.innerHTML = `Add to cart <i class="fa fa-shopping-cart" style="font-size: 16px"></i>`;
+            }
+
+            else {
+                cartList.push(placeToVisit);
+                // console.log(cartList);
+                localStorage.setItem("cartItems", JSON.stringify(cartList));
+                e.target.innerText = "Remove from Cart";
+            }
+            updateCart();
+        })
+    })
+   
     function redirect(text){
         console.log("text")
     }
@@ -129,4 +209,6 @@ Array.from(optionValues).forEach((btn) => {
         location.href = "details.html";
     })
 })
+
+
 

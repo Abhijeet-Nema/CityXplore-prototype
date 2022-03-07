@@ -9,7 +9,9 @@
       "Cycle Tour": 30,
       "Two Wheeler": 60
     },
-    "imgSrcName" : "vanVihar"
+    "imgSrcName" : "vanVihar",
+    "videoSrc": "https://www.youtube.com/embed/CCI2WSwtnRo",
+    "noOfImgs" : 7
   },
   {
     "location": "Sair Sapata",
@@ -19,7 +21,9 @@
     "entryFees": {
       "Per person": 30
     },
-    "imgSrcName" : "sairSapata"
+    "imgSrcName" : "sairSapata",
+    "videoSrc": "https://www.youtube.com/embed/foYuxw68T1c",
+    "noOfImgs" : 5
   },
   {
     "location": "Manav Sangrahalya",
@@ -29,6 +33,8 @@
     "entryFees": {
       "Per person": 50
     },
-    "imgSrcName" : "manavSangrahalya"
+    "imgSrcName" : "manavSangrahalya",
+    "videoSrc": "https://www.youtube.com/embed/twENFum1g-A",
+    "noOfImgs" : 5
   }
 ]

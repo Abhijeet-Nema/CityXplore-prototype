@@ -1,13 +1,255 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CityXplore - Location</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.css">
+
+    <title>CityXplore - details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #footer {
+            height: max-content;
+            padding: 30px 170px 30px 170px;
+        }
+
+        #footer a {
+            text-decoration: none;
+            color: grey;
+        }
+
+        #footer div {
+            margin: auto;
+            display: flex;
+            width: 30%;
+            justify-content: space-evenly;
+        }
+
+        #copyright {
+            color: grey;
+        }
+
+        .userAccount {
+            height: 35px;
+        }
+
+        #headVideo {
+            background: #f2f2f2;
+            height: max-content;
+            /* border: 2px solid; */
+        }
+
+        .key {
+            font-size: 22px;
+        }
+
+        .value {
+            font-size: 30px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .detailsGrid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .pair {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #desc {
+            font-size: 18px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        #images {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .overviewImg {
+            width: 40%;
+        }
+
+        .cityAndCart {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
 </head>
+
 <body>
-    TBC
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cart">
+        Launch demo modal
+    </button> -->
+    <!--Modal for Cart  -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Your Cart <i class="fa fa-shopping-cart"></i></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="cartItemsDiv" class="modal-body">
+                    <h5 class="text-center">Trips in your cart -</h5>
+                    <!-- <p>Sair Sapata</p> -->
+                    <div id="cartHtml"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success"><a style="color: white; text-decoration: none;" href="booking.html">Proceed to booking</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">CityXplore <img class="mx-0" height="25px" src="./img/tickets.png"
+                    alt="CityXplore"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Trending</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About us</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle px-4" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img class="userAccount mx-1" src="./img/userAccount.png" alt="Account">
+                                John Doe
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#"><img height="25px" src="./img/manageAccount.png"
+                                            alt="Manage Account"> Manage Account </a></li>
+                                <li><a class="dropdown-item" onclick="cartModal.toggle()"><img height="25px"
+                                            src="./img/cart.png" alt="Cart">
+                                        Cart</a></li>
+                                <li><a class="dropdown-item" href="booking.html"><img height="25px" src="./img/booking.png"
+                                            alt="Bookings"> Bookings</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item text-center" href="#">Your activity <img class="mx-1"
+                                            height="25px" src="./img/activity.png" alt="Your activity"></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="headVideo" class="p-3 d-flex justify-content-center">
+        <iframe id="videoSrcEle" width="888" height="500" src="https://www.youtube.com/embed/CCI2WSwtnRo"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    </div>
+    <div class="container details">
+        <div class="cityAndCart my-3">
+            <h1 class="mx-4" id="locationName">Sair Sapata</h1>
+            <button style="height: 40px;" class="btn btn-danger addToCartBtn px-2">Add to cart <i
+                    class="fa fa-shopping-cart"></i></button>
+        </div>
+        <div class="detailsGrid p-3">
+            <div class="pair">
+                <div class="fees key">
+                    Entry Fees :
+                </div>
+                <div id="feesAmount" class="value">
+                    ₹15
+                </div>
+            </div>
+            <div class="pair">
+                <div class="titimgs key">
+                    Timings :
+                </div>
+                <div id="timingsValue" class="value">
+                    10 AM - 5 PM
+                </div>
+            </div>
+        </div>
+        <div id="desc" class="my-2 p-2">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus placeat aspernatur ipsum
+            ducimus doloremque necessitatibus, perspiciatis nostrum quae optio? Doloremque dolorem doloribus hic,
+            aperiam totam harum qui? Eius, maiores. Nobis rem facere cupiditate ab assumenda suscipit, iusto explicabo
+            quasi eaque delectus neque modi doloribus? Tempore ipsum molestias atque quasi blanditiis sit totam, illum
+            minus vero corrupti nobis nesciunt quae quod officia nulla amet molestiae iure quisquam ut recusandae, fugit
+            aliquid at iste sint! Nisi autem repudiandae maiores dolorum dicta reiciendis dignissimos temporibus
+            blanditiis iste mollitia, consectetur tempore corrupti? Voluptates id in qui omnis repudiandae consectetur
+            reiciendis ipsa fugit libero.
+        </div>
+        <div id="images" class="my-2">
+            <!-- <img src="./locationImg/vanVihar/vanVihar_3.jpeg" alt="" class="overviewImg my-3"> -->
+        </div>
+
+        <div id="reviews" class="py-2 my-4">
+            <h3 my-2>Reviews</h3>
+            <p style="color: grey; font-style: italic;">No reviews yet. Be the first one to give review</p>
+        </div>
+        <div id="blogs" class="py-2 my-4">
+            <h3 my-2>Blogs by the visitors</h3>
+            <p style="color: grey; font-style: italic;">No related blogs available. Start the blogs</p>
+        </div>
+    </div>
+
+    <div class="bg-light" id="footer">
+        <div>
+            <a href="#">Home</a>
+            <a href="#">Log out</a>
+            <a href="#">Blogs</a>
+            <a href="#">FAQs</a>
+            <a href="#">Contact us</a>
+        </div>
+        <hr />
+        <div>
+            <p id="copyright">© 2021 CityXplore</p>
+        </div>
+        <div style="width: 20%;">
+            <i style="font-size: 28px;" class="fa fa-github"></i>
+            <i style="font-size: 28px;" class="fa fa-instagram"></i>
+            <i style="font-size: 28px;" class="fa fa-twitter"></i>
+        </div>
+    </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="./details.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
