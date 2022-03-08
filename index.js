@@ -10,6 +10,8 @@ let addToCartBtn = document.getElementsByClassName("addToCartBtn");
 let cardItemsArr;
 var cartModal;
 
+// console.log(optionValues);
+
 setTimeout(() => {
     cartModal = new bootstrap.Modal(document.getElementById('cartModal'), {
         keyboard: false
@@ -63,7 +65,7 @@ searchbar.addEventListener("focus", () => {
 searchbar.addEventListener("blur", () => {
     setTimeout(() => {
         options.style.visibility = "hidden";
-    }, 100);
+    }, 500);
 })
 
 searchbar.addEventListener("input", () => {
@@ -195,9 +197,9 @@ window.addEventListener("load", async () => {
     }
 })
 
-// console.log(optionValues)
 
 Array.from(optionValues).forEach((btn) => {
+    // console.log(btn)
     btn.addEventListener("click", (e) => {
         // preventDefault();
         // console.log(e)
