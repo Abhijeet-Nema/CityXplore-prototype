@@ -17,12 +17,41 @@ setTimeout(() => {
     })
 }, 100);
 
+
+// window.addEventListener("load", async ()=>{
+// let location;
+fetch("./jsonData/locations.json").then((res) => {
+    return res.json();
+}).then(data => {
+    locations = data;
+    // console.log(locations);
+    // console.log(cartList);
+    locations.forEach((locObj, ind) => {
+        // console.log(locObj["city"]);
+        if (locObj["location"].toLowerCase() === interestedLocation.toLowerCase()) {
+            // console.log(locObj);
+            videoSrcEle.src = locObj["videoSrc"];
+            locationName.innerText = interestedLocation;
+            feesAmount.innerText = Object.values(locObj["entryFees"])[0];
+            timingsValue.innerText = locObj["timings"];
+            desc.innerText = locObj["description"];
+            for (let index = 1; index <= locObj["noOfImgs"]; index++) {
+                images.innerHTML += `
+                    <img src="./locationImg/${locObj["imgSrcName"]}/${locObj["imgSrcName"]}_${index}.jpeg" alt="" class="overviewImg my-3">
+                `;
+            }
+        }
+
+    })
+})
+// })
+
 document.title = `CityXplore - ${interestedLocation}`;
 copyright.innerText = `© ${new Date().getFullYear()} CityXplore`;
 
 updateCart();
 
-function updateCart(){
+function updateCart() {
     let SavedInlocalStorage = localStorage.getItem("cartItems");
     // console.log(SavedInlocalStorage);
     if (SavedInlocalStorage == null) {
@@ -90,31 +119,3 @@ Array.from(addToCartBtn).forEach((btn) => {
     })
 })
 
-window.addEventListener("load", async ()=>{
-    let location;
-    await fetch("./jsonData/locations.json").then((res) => {
-        return res.json();
-    }).then(data => {
-        locations = data;
-        // console.log(locations);
-    })
-
-    // console.log(cartList);
-    locations.forEach((locObj, ind) => {
-        // console.log(locObj["city"]);
-        if (locObj["location"].toLowerCase() === interestedLocation.toLowerCase()){
-            // console.log(locObj);
-            videoSrcEle.src = locObj["videoSrc"];
-            locationName.innerText = interestedLocation;
-            feesAmount.innerText = Object.values(locObj["entryFees"])[0];
-            timingsValue.innerText = locObj["timings"];
-            desc.innerText = locObj["description"];
-            for (let index = 1; index <= locObj["noOfImgs"]; index++) {
-                images.innerHTML += `
-                    <img src="./locationImg/${locObj["imgSrcName"]}/${locObj["imgSrcName"]}_${index}.jpeg" alt="" class="overviewImg my-3">
-                `;
-            }
-        }
-        
-    })
-})
